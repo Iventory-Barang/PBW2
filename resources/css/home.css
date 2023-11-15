@@ -1,0 +1,26 @@
+.retangle {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: 300px; /* Sesuaikan lebar retangle sesuai kebutuhan */
+  }
+  
+  img {
+    width: 80px; /* Sesuaikan ukuran gambar sesuai kebutuhan */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .info {
+    flex: 1;
+  }
+  
+  .info p {
+    margin: 0;
+  }
+  
+  .info p:first-child {
+    font-weight: bold;
+  }
+  
