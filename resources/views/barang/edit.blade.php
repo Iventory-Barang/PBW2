@@ -25,10 +25,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
     <h3 style="display: flex; align-items: center; font-weight: bold;">
-        <a href="{{ route('dashboardtoko') }}" style="margin-right: 10px; text-decoration: none; display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 0.7em; color: black; margin-right: 10px;"></i>
-        </a>
-        Tambah Data Barang
+    <a href="{{ route('barang.detail') }}" style="margin-right: 10px; text-decoration: none; display: flex; align-items: center;">
+    <i class="fas fa-arrow-left" style="font-size: 0.7em; color: black; margin-right: 10px;"></i>
+</a>
+
+        Edit Data Barang
     </h3>
         
         <ul class="navbar-nav ms-auto">
@@ -58,13 +59,7 @@
             <div class="col-md-4 mb-3" style="margin-top: 80px;">
                 <div class="card" style="height: 450px; width: 1000px; background-color: #D15D5D4D; margin-top: 10px; margin: 0 auto;">
                     <div class="row">
-                        <div class="col-md-5">
-                            <div class="card-body" style="display: flex; align-items: center;">
-                                <p style="margin-right: 16px; margin-bottom: 0;">Nama Barang:</p>
-                                <div style="flex: 1; position: relative; margin-left: 50px;">
-                                    <input type="text" name="nama_barang" style="width: 300%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
-                                </div>
-                            </div>
+                        <div class="col-md-5" style="margin-top: 50px;">
                             <div class="card-body" style="display: flex; align-items: center;">
                                 <p style="margin-right: 16px; margin-bottom: 0;">Harga:</p>
                                 <div style="flex: 1; position: relative; margin-left: 100px;">

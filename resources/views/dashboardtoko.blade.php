@@ -74,68 +74,87 @@
 </nav>
 
 <a class="nav-link" style="display: block; margin-left: 120px;">
-        Selamat Datang Di {{ auth()->user()->name }}
+        Selamat Datang Di Toko {{ auth()->user()->name }}
 </a>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-4 mb-3">
         <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
             <div class="row">
+                @foreach ($barangs as $barang)
+                
                 <div class="col-md-7">
-                    <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
+                    <img src="{{ $barang->gambar }}" class="card-img-top" alt="">
                 </div>
                 <div class="col-md-5">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p style="margin-bottom: 20px; margin-top: 90px; font-weight: bold;">
-                            <small class="text-body-secondary">    
-                                Garam Meja <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p style="margin-bottom: 143px; font-weight: bold;">
-                            <small class="text-body-secondary">    
-                                Rp. 4000 <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p class="card-text"></p>
+                            <h5 class="card-title"></h5>
+                            <p style="margin-bottom: 20px; margin-top: 90px; font-weight: bold;">
+                                <small class="text-body-secondary">    
+                                {{ $barang->nama_barang }} <a href="" class=""></a>
+                                </small>
+                            </p>
+                            <p style="margin-bottom: 143px; font-weight: bold;">
+                                <small class="text-body-secondary">    
+                                    Rp. {{ $barang->harga }} <a href="" class=""></a>
+                                </small>
+                                <a href="{{ route('barang.detail') }}">
+                                <button type="button" class="btn btn-primary" style="background-color: #D15D5D; border-radius: 50px;">
+                                Lihat Detail
+                                </button>
+                                </a>
+                            </p>
+                            
                         
+                            <p class="card-text"></p>
+                            
                     </div>
                 </div>
             </div>
-          </div>
         </div>
     </div>
+    
+    @endforeach
 </div>
+</div> -->
 <div class="container">
     <div class="row">
-        <div class="col-md-4 mb-3">
-        <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
-            <div class="row">
-                <div class="col-md-7">
-                    <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p style="margin-bottom: 20px; margin-top: 90px; font-weight: bold;">
-                            <small class="text-body-secondary">    
-                                Masako <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p style="margin-bottom: 143px; font-weight: bold;">
-                            <small class="text-body-secondary">    
-                                Rp. 500 <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p class="card-text"></p>
-                        
+      <div class="col-md-4 mb-3">
+          @foreach ($barangs as $barang)
+            <div class="card" style="height: 300px; width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
+                <div class="row">
+                    <div class="col-md-7">
+                        <img src="{{ asset($barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p style="margin-bottom: 20px; margin-top: 90px; font-weight: bold;">
+                                <small class="text-body-secondary">
+                                    {{ $barang->nama_barang }} <a href="" class=""></a>
+                                </small>
+                            </p>
+                            <p style="margin-bottom: 143px; font-weight: bold;">
+                                <small class="text-body-secondary">
+                                    Rp. {{ $barang->harga }} <a href="" class=""></a>
+                                </small>
+                                <a href="{{ route('barang.detail', ['nama_barang' => $barang->nama_barang]) }}" onclick="ubahNamaBarangDetail('{{ $barang->nama_barang }}')">
+                                    <button type="button" class="btn btn-primary" style="background-color: #D15D5D; border-radius: 50px;">
+                                        Lihat Detail
+                                    </button>
+                                </a>
+                            </p>
+                            <p class="card-text"></p>
+                        </div>
                     </div>
                 </div>
             </div>
-          </div>
+            @endforeach
         </div>
     </div>
 </div>
+
+
 
 
 
