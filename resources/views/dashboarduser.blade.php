@@ -82,63 +82,36 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 mb-3">
-        <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
-            <div class="row">
-                <div class="col-md-7">
-                    <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p style="font-weight: bold;">
-                            <small class="text-body-secondary" >    
-                                Toko danis <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p>
-                            <small class="text-body-secondary">    
-                                Gate 1 Bundaran, Telkom University <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p class="card-text"></p>
-                        <a href="{{ route('user.DetailToko') }}" class="btn btn-primary">lihat Detail</a>
+                @foreach($tokoUsers as $tokoUser)
+                <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p style="font-weight: bold;">
+                                    <small class="text-body-secondary">
+                                        {{ $tokoUser->name }} <a href="" class=""></a>
+                                    </small>
+                                </p>
+                                <p>
+                                    <small class="text-body-secondary">
+                                        {{ $tokoUser->alamat }} <a href="" class=""></a>
+                                    </small>
+                                </p>
+                                <p class="card-text"></p>
+                                <a href="{{ route('user.DetailToko', ['id' => $tokoUser->id]) }}" class="btn btn-primary">Lihat Selengkapnya</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-          </div>
-        </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 mb-3">
-        <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
-            <div class="row">
-                <div class="col-md-7">
-                    <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
-                </div>
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p style="font-weight: bold;">
-                            <small class="text-body-secondary">    
-                                Warung bu titik <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p>
-                            <small class="text-body-secondary">    
-                                Bundaran Gate 1, Telkom University <a href="" class=""></a>
-                            </small>
-                        </p>
-                        <p class="card-text"></p>
-                        <a href="{{ route('user.DetailToko') }}" class="btn btn-primary">lihat Detail</a>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
-</div>
+
 
 
 

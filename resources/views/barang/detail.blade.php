@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <title>Iventory Barang</title>
+    
     </head>
   <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
@@ -52,12 +53,12 @@
   </div>
 </nav>
 <br><br>
-<img src="https://source.unsplash.com/400x300?" alt="Positioned Image" style="margin-bottom: 95px;">
-<div style="float: right; margin-left: 10px;">
+<!-- <img src="https://source.unsplash.com/400x300?" alt="Positioned Image" style="margin-bottom: 95px;"> -->
+<!-- <div style="float: right; margin-left: 10px;">
     <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D;">
         <div class="row">
             <div class="col-md-7">
-                <!-- Your image tag goes here -->
+                Your image tag goes here
             </div>
             <div class="col-md-6" style="text-align: left; font-weight: bold;">
                 <div class="card-body" style="text-align: left;">
@@ -87,6 +88,63 @@
             </div>
         </div>
     </div>
+</div> -->
+<img src="{{ asset('storage/'.$barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+<div style="float: right; margin-left: 10px;">
+    <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D;">
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Your image tag goes here -->
+            </div>
+            <div class="col-md-6" style="text-align: left; font-weight: bold;">
+                <div class="card-body" style="text-align: left;">
+                    <h5 class="card-title"></h5>
+                    <p style="text-align: left; font-weight: bold;">
+                        <small class="text-body-secondary">    
+                            {{ $barang->nama_barang }} <a href="" class=""></a>
+                        </small>
+                    </p>
+                    <p style="text-align: left; font-weight: bold;">
+                        <small class="text-body-secondary">    
+                            Rp. {{ $barang->harga }} <a href="" class=""></a>
+                        </small>
+                    </p>
+                    <p style="text-align: left; font-weight: bold;">
+                        <small class="text-body-secondary">    
+                            Stok: {{ $barang->jumlah_stok }} <a href="" class=""></a>
+                        </small>
+                        <!-- <a href="{{ route('barang.edit', ['id' => $barang->id, 'nama_barang' => $barang->nama_barang]) }}" onclick="ubahNamaBarangDetail('{{ $barang->nama_barang }}')">
+                            <button type="button" class="btn btn-primary" style="background-color: #D15D5D; border-radius: 50px;">
+                                Edit Barang   
+                            </button>
+                        </a> -->
+                        <a href="{{ route('barang.edit', ['id' => $barang->id]) }}">
+                        <button type="button" class="btn btn-primary" style="background-color: #D15D5D; border-radius: 50px;">
+                            Edit Barang
+                        </button>
+                    </a>
+
+                        @php
+                            // Simpan data barang ke dalam sesi
+                            session(['barang' => $barang]);
+                        @endphp
+                        @push('scripts')
+    <script>
+        function setBarangSession(barang) {
+            // Use AJAX or other methods to send the product details to the server
+            // In this example, I'm using a simple JavaScript session storage
+            sessionStorage.setItem('barangDetails', JSON.stringify(barang));
+        }
+    </script>
+@endpush
+                    </p>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 

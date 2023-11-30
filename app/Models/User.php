@@ -46,11 +46,16 @@ class User extends Authenticatable
 
     public function toko()
     {
-        return $this->belongsTo(Toko::class, 'toko_id');
+        return $this->belongsTo(Toko::class, 'toko_user_id');
     }
 
     public function barangs()
     {
-    return $this->hasMany(Barang::class, 'id');
+    return $this->hasMany(Barang::class, 'toko_user_id');
+    }
+
+    public function tokoUser()
+    {
+    return $this->belongsTo(TokoUser::class, 'toko_user_id');
     }
 }

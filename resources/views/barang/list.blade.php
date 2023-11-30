@@ -42,85 +42,58 @@
     </div>
   </div>
 </nav>
-<h3 style="display: block; margin-left: 100px; font-weight: bold; ">
+<h3 style="display: block; margin-left: 100px; font-weight: bold;">
     <a href="{{ route('dashboard') }}" style="margin-right: 10px; text-decoration: none;">
-            <i class="fas fa-arrow-left" style="font-size: 0.7em;"></i>
-        </a>
-Warung bu titik
+        <i class="fas fa-arrow-left" style="font-size: 0.7em;"></i>
+    </a>
+    @if($tokoUser)
+        {{ $tokoUser->name }}
+    @else
+        Nama TokoUser Tidak Ditemukan
+    @endif
 </h3>
 
-<!-- <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-3">
-          @foreach($tokoUsers as $tokoUser)
-            <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
-                <div class="row">
-                    <div class="col-md-7">
-                        <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $tokoUser->name }}</h5>
-                            <p style="margin-bottom: 1px; font-weight: bold;">
-                                <small class="text-body-secondary">
-                                    {{ $tokoUser->alamat }}
-                                </small>
-                            </p>
 
-                            {{-- Loop through products --}}
-                            @foreach($tokoUser->barangs as $barang)
-                                <p class="card-text"></p>
-                                <p style="margin-bottom: 0px;">{{ $barang->nama_barang }}</p>
-                                <p style="margin-bottom: 0px;">Harga: Rp. {{ $barang->harga }}</p>
-                                <p style="margin-bottom: 0px;">Stok: {{ $barang->jumlah_stok }}</p>
-                                <p style="margin-bottom: 0px;">Terjual: 15</p>
-                            @endforeach
 
-                            {{-- Add more details if needed --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div> -->
 <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        @foreach($tokoUsers as $tokoUser)
-        <div class="card" style="width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
-    <div style="display: flex; height: 300px;">
-        <div style="flex: 7;">
-            <img src="{{ asset($barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
-        </div>
-        <div style="flex: 5; padding: 10px;">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p style="margin-bottom: 20px; margin-top: 10px; font-weight: bold;">
-                    <small class="text-body-secondary">
-                        {{ $barang->nama_barang }} <a href="" class=""></a>
-                    </small>
-                </p>
-                <p style="margin-bottom: 20px; font-weight: bold;">
-                    <small class="text-body-secondary">
-                        Harga Rp. {{ $barang->harga }} <a href="" class=""></a>
-                    </small>
-                </p>
-                <p style="margin-bottom: 20px; font-weight: bold;">
-                    <small class="text-body-secondary">
-                        Stok: {{ $barang->jumlah_stok }} <a href="" class=""></a>
-                    </small>
-                </p>
-                <p class="card-text"></p>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                @if(!empty($barangs))
+                    @foreach($barangs as $barang)
+                        <div class="card" style="width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
+                            <div style="display: flex; height: 300px;">
+                                <div style="flex: 7;">
+                                    <img src="{{ asset($barang->tokoUser->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                                </div>
+                                <div style="flex: 5; padding: 10px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"></h5>
+                                        <p style="margin-bottom: 20px; margin-top: 10px; font-weight: bold;">
+                                            <small class="text-body-secondary">
+                                                {{ $barang->nama_barang }} <a href="" class=""></a>
+                                            </small>
+                                        </p>
+                                        <p style="margin-bottom: 20px; font-weight: bold;">
+                                            <small class="text-body-secondary">
+                                                Harga Rp. {{ $barang->harga }} <a href="" class=""></a>
+                                            </small>
+                                        </p>
+                                        <p style="margin-bottom: 20px; font-weight: bold;">
+                                            <small class="text-body-secondary">
+                                                Stok: {{ $barang->jumlah_stok }} <a href="" class=""></a>
+                                            </small>
+                                        </p>
+                                        <!-- ... other details ... -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <p>Tidak ada barang yang ditemukan.</p>
+                @endif
             </div>
         </div>
-    </div>
-</div>
-
-            @endforeach
-        </div>
-    </div>
 </div>
 
 

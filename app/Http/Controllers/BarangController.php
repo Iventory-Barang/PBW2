@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Barang;
+use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
 {
@@ -64,20 +66,92 @@ public function tambah(Request $request)
         return redirect()->route('dashboardtoko')->with('error', 'Barang tidak ditemukan.');
     }
 }
-    public function edit()
-    {
-        return view('barang.edit');
-    }
-    public function index()
-    {
-    $barangs = Barang::all();
-    return view('dashboardtoko', compact('barangs'));
-    }
-    public function detailFunction($nama_barang)
+// public function edit()
+// {
+//     // Ambil data barang berdasarkan ID
+//     $barang = Barang::find();
+
+//     // Periksa apakah barang ditemukan
+//     if (!$barang) {
+//         return redirect()->route('dashboardtoko')->with('error', 'Barang tidak ditemukan.');
+//     }
+
+//     // Kirim data barang ke tampilan edit
+//     return view('barang.edit', compact('barang'));
+// }
+public function edit()
 {
+    // Ambil data barang dari suatu sumber, misalnya dari database
+    // Di sini, saya menganggap Anda memiliki model Barang dan tabel barang di database
+    $barang = Barang::first(); // Sesuaikan sesuai kebutuhan Anda
+
+    // Periksa apakah barang ditemukan
+    if (!$barang) {
+        return redirect()->route('dashboardtoko')->with('error', 'Barang tidak ditemukan.');
+    }
+
+    // Kirim data barang ke tampilan edit
+    return view('barang.edit', compact('barang'));
+}
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'harga' => 'required',
+        'jumlah_stok' => 'required',
+        // ... (tambahkan validasi lainnya sesuai kebutuhan)
+    ]);
+
+    // Ambil barang berdasarkan ID
+    $barang = Barang::find($id);
+
+    // Pastikan barang ditemukan
+    if (!$barang) {
+        return redirect()->route('dashboardtoko')->with('error', 'Barang tidak ditemukan.');
+    }
+
+    // Perbarui data barang dengan data dari form
+    $barang->harga = $request->harga;
+    $barang->jumlah_stok = $request->jumlah_stok;
+
+    // Simpan perubahan ke database
+    $barang->save();
+
+    // Redirect dengan pesan sukses
+    return redirect()->route('dashboardtoko')->with('success', 'Barang berhasil diperbarui.');
+}
+public function hapus($id)
+{
+    $barang = Barang::find($id);
+
+    if (!$barang) {
+        return redirect()->route('dashboardtoko')->with('error', 'Barang tidak ditemukan.');
+    }
+
+    $barang->delete();
+
+    return redirect()->route('dashboardtoko')->with('success', 'Barang berhasil dihapus.');
+}
+
+public function index()
+{
+    // Dapatkan informasi toko dari pengguna yang saat ini login
+    $toko = Auth::user();
+
+    // Pastikan toko ditemukan
+    if (!$toko) {
+        return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
+    }
+
+    // Dapatkan semua barang dari toko yang login
+    $barangs = $toko->barangs;
+
+    return view('dashboardtoko', ['barangs' => $barangs]);
+}
+    public function detailFunction($nama_barang)
+    {
 
     // Logika lainnya untuk mendapatkan data halaman detail
     dd($nama_barang);
     // return view('barang.detail', ['nama_barang' => $nama_barang, /* data lainnya */]);
-}
+    }
 }

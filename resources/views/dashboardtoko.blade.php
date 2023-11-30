@@ -16,6 +16,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <title>Iventory Barang</title>
+    <script>
+    function hapusBarang(id) {
+        var konfirmasi = confirm("Apakah Anda yakin ingin menghapus barang ini?");
+
+        if (konfirmasi) {
+            // Menggunakan JavaScript untuk melakukan pengalihan ke URL penghapusan dengan metode DELETE
+            var form = document.createElement("form");
+            form.method = "POST";
+            form.action = "{{ url('/hapusBarang') }}/" + id;
+            form.innerHTML = '<input type="hidden" name="_method" value="DELETE">@csrf';
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+</script>
     </head>
   <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
@@ -124,7 +139,7 @@
             <div class="card" style="height: 300px; width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-7">
-                        <img src="{{ asset($barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                        <img src="{{ asset('storage/'.$barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
                     </div>
                     <div class="col-md-5">
                         <div class="card-body">
@@ -143,6 +158,9 @@
                                         Lihat Detail
                                     </button>
                                 </a>
+                                <button type="button" class="btn btn-danger" style="background-color: #D15D5D; border-radius: 50px;" onclick="hapusBarang('{{ $barang->id }}')">
+                                    Hapus
+                                </button>
                             </p>
                             <p class="card-text"></p>
                         </div>

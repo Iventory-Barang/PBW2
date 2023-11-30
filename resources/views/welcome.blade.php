@@ -48,9 +48,9 @@
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
                             <!-- Logo Aprilia di pojok kanan atas -->
-                            <a class="navbar-brand">
+                            <!-- <a class="navbar-brand">
                                 <img src="assets/images/logo/white-logo.svg" alt="Logo">
-                            </a>
+                            </a> -->
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">

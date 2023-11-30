@@ -102,7 +102,7 @@
                                     </small>
                                 </p>
                                 <p class="card-text"></p>
-                                <a href="{{ route('barang.list') }}" class="btn btn-primary">lihat selengkapnya</a>
+                                <a href="{{ route('barang.list', ['id' => $tokoUser->id]) }}" class="btn btn-primary">Lihat Selengkapnya</a>
                             </div>
                         </div>
                     </div>

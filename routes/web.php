@@ -36,18 +36,23 @@ Route::middleware(['auth', 'CekRole:admin'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/listBarang', [ListBarangController::class, 'index'])->name('barang.list');
+    Route::get('/listBarang/{id}', [ListBarangController::class, 'index'])->name('barang.list');
 
 });
 Route::middleware(['auth', 'CekRole:user'])->group(function () {
-    Route::get('/dashboarduser', function () {
-        return view('dashboarduser');
-    })->middleware(['auth', 'verified'])->name('dashboarduser');
+    Route::get('/dashboarduser', [DashboardController::class, 'detail'])
+        ->middleware(['auth', 'verified'])
+        ->name('dashboarduser');
+// Route::middleware(['auth', 'CekRole:user'])->group(function () {
+//     Route::get('/dashboarduser', function () {
+//         return view('dashboarduser');
+//     })->middleware(['auth', 'verified'])->name('dashboarduser');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/detailToko', [DetailTokoController::class, 'detail'])->name('user.DetailToko');
+    Route::get('/detailToko/{id}', [DetailTokoController::class, 'detail'])->name('user.DetailToko');
+    // Route::get('/listBarang/{id}', [ListBarangController::class, 'index'])->name('barang.list');
 });
 // Route::middleware(['auth', ])->group(function () {
 //     Route::get('/dashboard', function () {
@@ -77,12 +82,20 @@ Route::middleware(['auth', 'CekRole:TOKO'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/tambahBarang', [TambahBarangController::class, 'create'])->name('barang.tambah');
+    Route::post('/tambahBarang', [TambahBarangController::class, 'store'])->name('barang.store');
+
 
     Route::post('/tambah', [BarangController::class, 'store'])->name('tambah');
-    Route::post('/tambahBarang', [BarangController::class, 'tambah'])->name('tambah');
+    
+    // Route::post('/tambahBarang', [BarangController::eclass, 'tambah'])->name('tambah');
     Route::get('/detailBarang', [BarangController::class, 'detail'])->name('barang.detail');
     Route::get('/editBarang', [BarangController::class, 'edit'])->name('barang.edit');
     
+    
+    // Route::get('/editBarang/{nama_barang}', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/updateBarang/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/hapusBarang/{id}',[BarangController::class, 'hapus'])->name('barang.hapus');
+
 });
 // Route::middleware(['auth', 'CekRole:TOKO'])->group(function () {
 //     Route::get('/dashboardtoko', function () {

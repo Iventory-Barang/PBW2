@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('toko_user_id'); // Kolom toko_user_id sebagai kunci asing
+            $table->unsignedBigInteger('toko_user_id')->default(1); // Kolom toko_user_id sebagai kunci asing
             $table->string('nama_barang');
-            $table->decimal('harga', 10, 2);
+            $table->integer('harga');
             $table->string('gambar')->nullable();
             $table->integer('jumlah_stok');
             $table->timestamps();
@@ -23,7 +23,7 @@ return new class extends Migration
             // Menambahkan kunci asing
             $table->foreign('toko_user_id')
                 ->references('id')
-                ->on('toko_users')
+                ->on('users')
                 ->onDelete('cascade');
         });
     }

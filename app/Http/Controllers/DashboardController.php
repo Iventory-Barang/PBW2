@@ -13,4 +13,10 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('tokoUsers'));
     }
+    public function detail()
+    {
+        $tokoUsers = User::where('role', 'TOKO')->get();
+
+        return view('dashboarduser', compact('tokoUsers'));
+    }
 }

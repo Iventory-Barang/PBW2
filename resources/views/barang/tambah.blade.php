@@ -51,7 +51,7 @@
     </div>
   </div>
 </nav>
-<form method="POST" action="{{ route('tambah') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('barang.store') }}" enctype="multipart/form-data">
     @csrf
     <div class="container">
         <div class="row">
