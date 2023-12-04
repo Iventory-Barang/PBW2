@@ -24,12 +24,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <div class="input-group">
-              <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
-              <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
-            </div>
-        </ul>
+    <form action="{{ route('detail') }}" method="GET">
+    <ul class="navbar-nav mx-auto">
+        <div class="input-group">
+            <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="searchuser" value="{{ request('searchuser') }}">
+            <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
+        </div>
+    </ul>
+</form>
         
         <ul class="navbar-nav ms-auto">
           @auth
@@ -84,8 +86,7 @@
     </a>
     @if($tokoUser)
         {{ $tokoUser->name }}
-    @else
-        Nama TokoUser Tidak Ditemukan
+    
     @endif
 </h3>
 <div class="container">

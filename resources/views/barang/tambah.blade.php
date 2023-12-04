@@ -71,10 +71,16 @@
                                     <input type="text" name="harga" style="width: 300%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
                                 </div>
                             </div>
-                            <div class="card-body" style="display: flex; align-items: center;">
+                            <!-- <div class="card-body" style="display: flex; align-items: center;">
                                 <p style="margin-right: 16px; margin-bottom: 0;">Tambah Gambar:</p>
                                 <div style="flex: 1; position: relative; margin-left: 30px;">
                                     <input type="file" name="gambar" id="logoInput" accept="image/*" style="width: 100%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
+                                </div>
+                            </div> -->
+                            <div class="card-body" style="display: flex; align-items: center;">
+                                <p style="margin-right: 16px; margin-bottom: 0;">Tambah Gambar:</p>
+                                <div style="flex: 1; position: relative; margin-left: 30px;">
+                                    <input type="file" name="gambar" style="width: 100%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
                                 </div>
                             </div>
                             <div class="card-body" style="display: flex; align-items: center;">

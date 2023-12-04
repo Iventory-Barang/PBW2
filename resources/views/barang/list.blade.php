@@ -24,12 +24,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <div class="input-group">
-              <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
-              <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
-            </div>
-        </ul>
+    <form action="{{ route('list') }}" method="GET">
+    <ul class="navbar-nav mx-auto">
+        <div class="input-group">
+            <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
+            <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
+        </div>
+    </ul>
+</form>
         <!-- <div class="input-group">
         <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
         <div class="input-group-append">
@@ -46,10 +48,9 @@
     <a href="{{ route('dashboard') }}" style="margin-right: 10px; text-decoration: none;">
         <i class="fas fa-arrow-left" style="font-size: 0.7em;"></i>
     </a>
-    @if($tokoUser)
+    @if($tokoUser && $tokoUser->name)
         {{ $tokoUser->name }}
-    @else
-        Nama TokoUser Tidak Ditemukan
+    
     @endif
 </h3>
 
@@ -63,7 +64,8 @@
                         <div class="card" style="width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
                             <div style="display: flex; height: 300px;">
                                 <div style="flex: 7;">
-                                    <img src="{{ asset($barang->tokoUser->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                                <img src="{{ asset('nama_folder_upload_gambar/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+
                                 </div>
                                 <div style="flex: 5; padding: 10px;">
                                     <div class="card-body">

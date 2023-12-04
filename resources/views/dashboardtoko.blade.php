@@ -39,12 +39,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <div class="input-group">
-              <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
-              <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
-            </div>
-        </ul>
+    <form action="{{ route('searchtoko') }}" method="GET">
+    <ul class="navbar-nav mx-auto">
+        <div class="input-group">
+            <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="searchtoko" value="{{ request('searchtoko') }}">
+            <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
+        </div>
+    </ul>
+</form>
         
         <ul class="navbar-nav ms-auto">
           @auth
@@ -139,7 +141,8 @@
             <div class="card" style="height: 300px; width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-7">
-                        <img src="{{ asset('storage/'.$barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                    <img src="{{ asset('nama_folder_upload_gambar/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+
                     </div>
                     <div class="col-md-5">
                         <div class="card-body">

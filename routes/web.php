@@ -32,11 +32,13 @@ Route::middleware(['auth', 'CekRole:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('dashboard');
+    Route::get('/search', [DashboardController::class, 'search'])->name('search');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/listBarang/{id}', [ListBarangController::class, 'index'])->name('barang.list');
+    Route::get('/list', [ListBarangController::class, 'list'])->name('list');
 
 });
 Route::middleware(['auth', 'CekRole:user'])->group(function () {
@@ -47,11 +49,13 @@ Route::middleware(['auth', 'CekRole:user'])->group(function () {
 //     Route::get('/dashboarduser', function () {
 //         return view('dashboarduser');
 //     })->middleware(['auth', 'verified'])->name('dashboarduser');
+    Route::get('/searchuser', [DashboardController::class, 'searchuser'])->name('searchuser');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/detailToko/{id}', [DetailTokoController::class, 'detail'])->name('user.DetailToko');
+    Route::get('/detailToko/{id}', [DetailTokoController::class, 'index'])->name('user.DetailToko');
+    Route::get('/detail', [DetailTokoController::class, 'detail'])->name('detail');
     // Route::get('/listBarang/{id}', [ListBarangController::class, 'index'])->name('barang.list');
 });
 // Route::middleware(['auth', ])->group(function () {
@@ -76,6 +80,7 @@ Route::middleware(['auth', 'CekRole:user'])->group(function () {
 // });
 Route::middleware(['auth', 'CekRole:TOKO'])->group(function () {
     Route::get('/dashboardtoko',[BarangController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboardtoko');
+    Route::get('/searchtoko', [BarangController::class, 'searchtoko'])->name('searchtoko');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Barang;
+use App\Models\TokoUser;
 use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
@@ -24,6 +25,14 @@ class BarangController extends Controller
     $barang->nama_barang = $validatedData['nama_barang'];
     $barang->harga = $validatedData['harga'];
     // Handle image upload if applicable
+        // if ($request->hasFile('gambar')) {
+        //     $imagePath = $request->file('gambar')->store('nama_folder_upload_gambar', 'public');
+        //     $barang->gambar = $imagePath;
+        // }
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('nama_folder_upload_gambar/', $request->file('gambar')->getClientOriginalName());
+            $barang->gambar = $request->file('gambar')->getClientOriginalName();
+        }
     // $barang->gambar = // logic to handle image upload;
     $barang->jumlah_stok = $validatedData['jumlah_stok'];
     $barang->save();
@@ -45,10 +54,14 @@ public function tambah(Request $request)
         $barang->nama_barang = $validatedData['nama_barang'];
         $barang->harga = $validatedData['harga'];
         // Handle image upload if applicable
-        if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('barang_images', 'public');
-            $barang->gambar = $imagePath;
-        }
+        // if ($request->hasFile('gambar')) {
+        //     $imagePath = $request->file('gambar')->store('nama_folder_upload_gambar', 'public');
+        //     $barang->gambar = $imagePath;
+        // }
+            if ($request->hasFile('gambar')) {
+                $request->file('gambar')->move('nama_folder_upload_gambar/', $request->file('gambar')->getClientOriginalName());
+                $barang->gambar = $request->file('gambar')->getClientOriginalName();
+            }
         $barang->jumlah_stok = $validatedData['jumlah_stok'];
         $barang->save();
 
@@ -154,4 +167,18 @@ public function index()
     dd($nama_barang);
     // return view('barang.detail', ['nama_barang' => $nama_barang, /* data lainnya */]);
     }
+    public function searchtoko(Request $request)
+{
+    // Lakukan logika pencarian TokoUser berdasarkan nama toko
+    $tokoUser = TokoUser::where('name', 'like', '%'.$request->input('searchtoko').'%')->first();
+    
+    
+    // Lakukan logika pencarian Barang
+    $barangs = Barang::where('nama_barang', 'like', '%'.$request->input('searchtoko').'%')
+        ->orWhere('harga', 'like', '%'.$request->input('searchtoko').'%')
+        ->orWhere('jumlah_stok', 'like', '%'.$request->input('searchtoko').'%')
+        ->get();
+
+    return view('dashboardtoko', compact('tokoUser', 'barangs'));
+}
 }

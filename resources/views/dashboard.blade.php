@@ -22,12 +22,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
+        <!-- <ul class="navbar-nav mx-auto">
             <div class="input-group">
               <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
               <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
             </div>
-        </ul>
+        </ul> -->
+        <form action="{{ route('search') }}" method="GET" class="form-inline">
+            <div class="input-group">
+                <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
+                <button class="btn btn-light btn" style="border-radius: 30px;" type="submit">Search</button>
+            </div>
+        </form>
         <!-- <div class="input-group">
         <input type="text" class="form-control" style="width: 657px; border-radius: 30px;" placeholder="Search.." name="search" value="{{ request('search') }}">
         <div class="input-group-append">

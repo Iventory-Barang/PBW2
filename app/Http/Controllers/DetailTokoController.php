@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TokoUser;
+use App\Models\Barang;
 
 class DetailTokoController extends Controller
 {
-    public function detail($id)
+    public function index($id)
     {
         $tokoUser = TokoUser::find($id);
 
@@ -22,4 +23,19 @@ class DetailTokoController extends Controller
         'tokoUser' => $tokoUser,
     ]);
     }
+    public function detail(Request $request)
+{
+    // Lakukan logika pencarian TokoUser berdasarkan nama toko
+    $tokoUser = TokoUser::where('name', 'like', '%'.$request->input('searchuser').'%')->first();
+    
+    
+    // Lakukan logika pencarian Barang
+    $barangs = Barang::where('nama_barang', 'like', '%'.$request->input('searchuser').'%')
+        ->orWhere('harga', 'like', '%'.$request->input('searchuser').'%')
+        ->orWhere('jumlah_stok', 'like', '%'.$request->input('searchuser').'%')
+        ->get();
+
+    return view('user.DetailToko', compact('tokoUser', 'barangs'));
+}
+    
 }
