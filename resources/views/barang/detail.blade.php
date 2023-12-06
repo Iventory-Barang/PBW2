@@ -89,7 +89,7 @@
         </div>
     </div>
 </div> -->
-<img src="{{ asset('storage/'.$barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+<img src="{{ asset('storage/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}" style="width: 500px; height: 300px;">
 <div style="float: right; margin-left: 10px;">
     <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D;">
         <div class="row">

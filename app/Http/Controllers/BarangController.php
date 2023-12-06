@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Barang;
 use App\Models\TokoUser;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
@@ -40,33 +41,43 @@ class BarangController extends Controller
     // Redirect or return a response as needed
 }
 public function tambah(Request $request)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'nama_barang' => 'required',
-            'harga' => 'required|numeric',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'jumlah_stok' => 'required|numeric',
-        ]);
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'nama_barang' => 'required',
+        'harga' => 'required|numeric',
+        'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'jumlah_stok' => 'required|numeric',
+    ]);
 
-        // Create a new Barang instance and save it to the database
-        $barang = new Barang;
-        $barang->nama_barang = $validatedData['nama_barang'];
-        $barang->harga = $validatedData['harga'];
-        // Handle image upload if applicable
-        // if ($request->hasFile('gambar')) {
-        //     $imagePath = $request->file('gambar')->store('nama_folder_upload_gambar', 'public');
-        //     $barang->gambar = $imagePath;
-        // }
-            if ($request->hasFile('gambar')) {
-                $request->file('gambar')->move('nama_folder_upload_gambar/', $request->file('gambar')->getClientOriginalName());
-                $barang->gambar = $request->file('gambar')->getClientOriginalName();
-            }
-        $barang->jumlah_stok = $validatedData['jumlah_stok'];
-        $barang->save();
+    // Create a new Barang instance and save it to the database
+    $barang = new Barang;
+    $barang->nama_barang = $validatedData['nama_barang'];
+    $barang->harga = $validatedData['harga'];
 
-        // Redirect or return a response as needed
+    // Handle image upload if applicable
+    if ($request->hasFile('gambar')) {
+        // Generate a unique name for the image
+        $imageName = time().'.'.$request->gambar->extension();
+
+        // Make sure the directory exists, if not, create it
+        $directoryPath = 'public/nama_folder_upload_gambar/';
+        if (!Storage::exists($directoryPath)) {
+            Storage::makeDirectory($directoryPath, 0755, true);
+        }
+
+        // Store the image in the specified directory
+        $request->gambar->storeAs($directoryPath, $imageName);
+
+        // Save the image path to the database
+        $barang->gambar = $directoryPath . $imageName;
     }
+
+    $barang->jumlah_stok = $validatedData['jumlah_stok'];
+    $barang->save();
+
+    // Redirect or return a response as needed
+}
     public function detail(Request $request)
 {
     $nama_barang = $request->input('nama_barang');

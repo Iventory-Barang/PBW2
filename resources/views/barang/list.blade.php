@@ -64,7 +64,7 @@
                         <div class="card" style="width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
                             <div style="display: flex; height: 300px;">
                                 <div style="flex: 7;">
-                                <img src="{{ asset('nama_folder_upload_gambar/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                                <img src="{{ asset('storage/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}" style="margin-top: 50px;">
 
                                 </div>
                                 <div style="flex: 5; padding: 10px;">

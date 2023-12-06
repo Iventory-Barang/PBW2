@@ -194,7 +194,7 @@ a {
             <div class="col-lg-6">
                 <div class="card1 pb-5">
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                    <img src="{{ asset('assets/Masako.png') }}" class="image"> </div>
+                    <img src="{{ asset('assets/Stok Barang.jpg') }}" class="image"> </div>
                 </div>
             </div>
             <form method="POST" action="{{ route('login') }}">

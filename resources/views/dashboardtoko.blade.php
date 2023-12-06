@@ -141,7 +141,7 @@
             <div class="card" style="height: 300px; width: 300px; background-color: #D15D5D4D; margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-7">
-                    <img src="{{ asset('nama_folder_upload_gambar/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
+                    <img src="{{ asset('storage/' . $barang->gambar) }}" class="card-img-top" alt="{{ $barang->nama_barang }}" style="margin-top: 50px;">
 
                     </div>
                     <div class="col-md-5">
