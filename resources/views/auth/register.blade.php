@@ -23,7 +23,7 @@ body {
 
 .card2 {
     width: 590px;
-    height: 691px;
+    height: 950px;
     flex-shrink: 0;
 }
 
@@ -209,10 +209,10 @@ a {
             <div class="col-lg-6">
                 <div class="card1 pb-5">
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line" >
-                    <img src="{{ asset('assets/Stok Barang.jpg') }}" class="image"> </div>
+                    <img src="{{ asset('assets/Artboard 4.png') }}" class="image"> </div>
                 </div>
             </div>
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
@@ -232,6 +232,20 @@ a {
                         <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" style="border-radius: 17px;" required autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')" class="mt-1" />
                    </div>
+                    <!-- Address -->
+                   <div>
+                        <x-input-label for="address" :value="__('Alamat (khusus toko)')" />
+                        <x-text-input id="address" class="block mt-1 w-full" type="address" name="address" :value="old('address')" style="border-radius: 17px;" />
+                        <x-input-error :messages="$errors->get('address')" class="mt-1" />
+                   </div>
+                    <!-- image -->
+                    <div>
+    <x-input-label for="image" :value="__('Gambar (khusus toko)')" />
+    <input id="image" wire:model="image" class="block mt-1 w-full" type="file" name="image" style="border-radius: 17px;" />
+    <x-input-error :messages="$errors->get('image')" class="mt-1" />
+</div>
+
+                   <!-- Role -->
                    <div>
                         <x-input-label for="role" :value="__('Role')" />
                         <select name="role" id="role" class="block mt-1 w-full" style="border-radius: 17px;" required>
@@ -288,7 +302,7 @@ a {
                     <button type="submit" class="btn btn-blue text-center">{{ __('Register') }}</button>
                 </div>
                 <div class="row mb-4 px-3"> <small class="font-weight-bold">{{ __('Already registered?') }}
-                     <a class="text-danger" href="http://localhost/TubesPBW/public/login">Login</a></small> </div>
+                     <a class="text-danger" href="{{ route('login') }}">Login</a></small> </div>
                 </div>
             </div>
             </form>

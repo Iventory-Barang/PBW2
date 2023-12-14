@@ -41,8 +41,8 @@
           @auth
           <li class="nav-item" style="margin-top: 15px;">
             <div style="display: flex; align-items: center; margin-right: 10px;">
-                <i class="fas fa-user"></i> <!-- Icon Profil -->
-                <i class="fas fa-bell" style="margin-left: 15px;"></i> <!-- Icon Notifikasi -->
+                <!-- <i class="fas fa-user"></i> Icon Profil -->
+                <!-- <i class="fas fa-bell" style="margin-left: 15px;"></i> Icon Notifikasi -->
             </div>
           </li>
               <li class="nav-item dropdown">

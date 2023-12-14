@@ -47,8 +47,8 @@
           @auth
           <li class="nav-item" style="margin-top: 15px;">
             <div style="display: flex; align-items: center; margin-right: 10px;">
-                <i class="fas fa-user"></i> <!-- Icon Profil -->
-                <i class="fas fa-bell" style="margin-left: 15px;"></i> <!-- Icon Notifikasi -->
+                <!-- <i class="fas fa-user"></i> Icon Profil
+                <i class="fas fa-bell" style="margin-left: 15px;"></i> Icon Notifikasi -->
             </div>
           </li>
               <li class="nav-item dropdown">
@@ -92,7 +92,9 @@
                 <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D; margin-top: 10px;">
                     <div class="row">
                         <div class="col-md-7">
-                            <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt="">
+                          <img src="{{ asset('storage/' . $tokoUser->image) }}" class="card-img-top" alt="" style="margin-top: 50px; max-height: 200px; object-fit: contain;">
+                            <!-- <img src="https://source.unsplash.com/500x300?" class="card-img-top" alt=""> -->
+
                         </div>
                         <div class="col-md-5">
                             <div class="card-body">
@@ -104,7 +106,7 @@
                                 </p>
                                 <p>
                                     <small class="text-body-secondary">
-                                        {{ $tokoUser->alamat }} <a href="" class=""></a>
+                                        {{ $tokoUser->address }} <a href="" class=""></a>
                                     </small>
                                 </p>
                                 <p class="card-text"></p>

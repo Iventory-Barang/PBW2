@@ -194,7 +194,7 @@ a {
             <div class="col-lg-6">
                 <div class="card1 pb-5">
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-                    <img src="{{ asset('assets/Stok Barang.jpg') }}" class="image"> </div>
+                    <img src="{{ asset('assets/Artboard 4.png') }}" class="image"> </div>
                 </div>
             </div>
             <form method="POST" action="{{ route('login') }}">
@@ -249,7 +249,7 @@ a {
                     <button type="submit" class="btn btn-blue text-center">Login</button>
                 </div>
                 <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account?
-                     <a class="text-danger" href="http://localhost/TubesPBW/public/register">Register</a></small> </div>
+                     <a class="text-danger" href="{{ route('register') }}">Register</a></small> </div>
                 </div>
             </div>
             </form>
