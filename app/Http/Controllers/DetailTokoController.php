@@ -25,11 +25,9 @@ class DetailTokoController extends Controller
     }
     public function detail(Request $request)
 {
-    // Lakukan logika pencarian TokoUser berdasarkan nama toko
     $tokoUser = TokoUser::where('name', 'like', '%'.$request->input('searchuser').'%')->first();
     
     
-    // Lakukan logika pencarian Barang
     $barangs = Barang::where('nama_barang', 'like', '%'.$request->input('searchuser').'%')
         ->orWhere('harga', 'like', '%'.$request->input('searchuser').'%')
         ->orWhere('jumlah_stok', 'like', '%'.$request->input('searchuser').'%')

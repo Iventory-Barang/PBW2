@@ -112,12 +112,17 @@
                                                 Harga Rp. {{ $barang->harga }} <a href="" class=""></a>
                                             </small>
                                         </p>
+                                        <p style="margin-bottom: 20px; font-weight: bold;">
+                                            <small class="text-body-secondary">
+                                                Stok: {{ $barang->jumlah_stok }} <a href="" class=""></a>
+                                            </small>
+                                        </p>
                                         <!-- <p style="margin-bottom: 20px; font-weight: bold;">
                                             <small class="text-body-secondary">
                                                 Stok: {{ $barang->jumlah_stok }} <a href="" class=""></a>
                                             </small>
                                         </p> -->
-                                        <!-- ... other details ... -->
+                                        
                                     </div>
                                 </div>
                             </div>

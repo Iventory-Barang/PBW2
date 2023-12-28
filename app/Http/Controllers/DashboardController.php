@@ -37,4 +37,8 @@ class DashboardController extends Controller
 
         return view('dashboarduser', compact('tokoUsers'));
     }
+    public function profile()
+    {
+        return view('admin.profile');
+    }
 }

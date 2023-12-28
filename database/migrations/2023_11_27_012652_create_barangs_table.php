@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('jumlah_stok');
             $table->timestamps();
 
-            // Menambahkan kunci asing
             $table->foreign('toko_user_id')
                 ->references('id')
                 ->on('users')
@@ -34,7 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('barangs', function (Blueprint $table) {
-            // Menghapus kunci asing
             $table->dropForeign(['toko_user_id']);
         });
 

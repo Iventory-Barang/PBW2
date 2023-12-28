@@ -20,7 +20,7 @@ class LoginController extends Controller
     } elseif ($user->role == 'user') {
         return redirect()->route('dashboard');
     } else {
-        return redirect('/'); // Sesuaikan dengan halaman default jika tidak ada peran yang cocok
+        return redirect('/'); 
     }
 }
 }

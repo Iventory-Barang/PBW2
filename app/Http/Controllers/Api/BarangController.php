@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Dflydev\DotAccessData\Data;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class BarangController extends Controller
 {
 
     public function index()
     {
-        $data = User::orderBy('name', 'asc')->get();
+        $data = Barang::orderBy('toko_user_id', 'asc')->get();
         return response()->json([
             'status' => true,
             'message'=> 'Data ditemukan',
@@ -23,11 +22,11 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $dataUser = new User;
-        $dataUser->name = $request->name;
-        $dataUser->email = $request->email;
-        $dataUser->password = $request->password;
-        $dataUser->role = $request->role;
+        $dataUser = new Barang;
+        $dataUser->toko_user_id = $request->toko_user_id;
+        $dataUser->nama_barang = $request->nama_barang;
+        $dataUser->harga = $request->harga;
+        $dataUser->jumlah_stok = $request->jumlah_stok;
 
         $post = $dataUser->save();
 
@@ -40,7 +39,7 @@ class UserController extends Controller
 
     public function show(string $id)
     {
-        $data = User::find($id);
+        $data = Barang::find($id);
         if ($data) {
             return response()->json([
                 'status' => true,
@@ -58,17 +57,17 @@ class UserController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $dataUser = User::find($id);
+        $dataUser = Barang::find($id);
         if (empty($dataUser)) {
             return response()->json([
                 'status' => false,
                 'message' => 'Data tidak ditemukan'
             ], 404);
         }
-        $dataUser->name = $request->name;
-        $dataUser->email = $request->email;
-        $dataUser->password = $request->password;
-        $dataUser->role = $request->role;
+        $dataUser->toko_user_id = $request->toko_user_id;
+        $dataUser->nama_barang = $request->nama_barang;
+        $dataUser->harga = $request->harga;
+        $dataUser->jumlah_stok = $request->jumlah_stok;
 
         $post = $dataUser->save();
 
@@ -81,7 +80,7 @@ class UserController extends Controller
 
     public function destroy(string $id)
     {
-        $dataUser = User::find($id);
+        $dataUser = Barang::find($id);
         if (empty($dataUser)) {
             return response()->json([
                 'status' => false,

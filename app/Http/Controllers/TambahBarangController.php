@@ -14,7 +14,6 @@ class TambahBarangController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data jika diperlukan
         $request->validate([
             'nama_barang' => 'required',
             'harga' => 'required|numeric',
@@ -22,10 +21,8 @@ class TambahBarangController extends Controller
             'jumlah_stok' => 'required|numeric',
         ]);
     
-        // Dapatkan informasi toko dari pengguna yang saat ini login
         $toko = Auth::user();
     
-        // Simpan data ke database dengan menambahkan 'toko_user_id'
         $gambarPath = $request->file('gambar')->store('nama_folder_upload_gambar', 'public');
     
         $barang = new Barang([
@@ -35,12 +32,10 @@ class TambahBarangController extends Controller
             'jumlah_stok' => $request->input('jumlah_stok'),
         ]);
     
-        // Setel 'toko_user_id' berdasarkan toko yang login
         $barang->toko()->associate($toko);
         
         $barang->save();
     
-        // Redirect atau berikan respons sesuai kebutuhan Anda
         return redirect()->route('barang.tambah')->with('success', 'Data berhasil disimpan');
     }
 

@@ -26,18 +26,14 @@ class CekRole
 
         foreach ($levels as $role) {
             if (in_array($role, $userRoles)) {
-                // Check if the user has the role "toko"
                 if ($role == 'toko') {
-                    // Redirect to the toko dashboard route (replace 'toko.dashboard' with your actual route)
                     return redirect()->route('dashboardtoko');
                 }
                 return $next($request);
             }
         }
 
-        // if (in_array($request->user()->role,$levels)) {
-        //     return $next($request);
-        // }
+        
         return redirect('/');
     }
 }

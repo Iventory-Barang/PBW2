@@ -85,7 +85,10 @@
                                                 Stok: {{ $barang->jumlah_stok }} <a href="" class=""></a>
                                             </small>
                                         </p>
-                                        <!-- ... other details ... -->
+                                        <!-- <button type="button" class="btn btn-danger" style="background-color: #D15D5D; border-radius: 50px;" onclick="hapusBarang('{{ $barang->id }}')">
+                                    Hapus
+                                </button> -->
+                                        
                                     </div>
                                 </div>
                             </div>

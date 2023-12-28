@@ -32,12 +32,16 @@ Route::middleware(['auth', 'CekRole:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('dashboard');
+
+    Route::get('/profileadmin', [DashboardController::class, 'profile'])->name('admin.profile');
+
     Route::get('/search', [DashboardController::class, 'search'])->name('search');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/listBarang/{id}', [ListBarangController::class, 'index'])->name('barang.list');
+    Route::delete('/hapusBarang/{id}',[ListBarangController::class, 'hapus'])->name('barang.hapus');
     Route::get('/list', [ListBarangController::class, 'list'])->name('list');
 
 });
@@ -95,6 +99,8 @@ Route::middleware(['auth', 'CekRole:TOKO'])->group(function () {
     // Route::post('/tambahBarang', [BarangController::eclass, 'tambah'])->name('tambah');
     Route::get('/detailBarang', [BarangController::class, 'detail'])->name('barang.detail');
     Route::get('/editBarang', [BarangController::class, 'edit'])->name('barang.edit');
+
+    Route::get('/profiletoko', [BarangController::class, 'profile'])->name('barang.profile');
     
     
     // Route::get('/editBarang/{nama_barang}', [BarangController::class, 'edit'])->name('barang.edit');

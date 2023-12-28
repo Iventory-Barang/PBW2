@@ -50,6 +50,14 @@
         
         <ul class="navbar-nav ms-auto">
           @auth
+          <li class="nav-item" style="margin-top: 15px;">
+            <div style="display: flex; align-items: center; margin-right: 10px;">
+            <a href="{{ route('barang.profile') }}" class="fas fa-user"></a>
+
+ 
+                <!-- <i class="fas fa-bell" style="margin-left: 15px;"></i> Icon Notifikasi -->
+            </div>
+          </li>
           
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

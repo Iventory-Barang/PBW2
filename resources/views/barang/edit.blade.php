@@ -94,6 +94,10 @@
     // Retrieve the product details from the session
     $barangDetails = session('barangDetails');
 @endphp
+@php
+    $barang = session('barang');
+@endphp
+
 <form method="POST" action="{{ route('barang.update', $barang->id) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -112,7 +116,7 @@
                             <div class="card-body" style="display: flex; align-items: center;">
         <p style="margin-right: 16px; margin-bottom: 0;">Harga:</p>
         <div style="flex: 1; position: relative; margin-left: 100px;">
-            <input type="text" name="harga" value="{{ $barang->harga }}" style="width: 300%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
+        <input type="text" name="harga" value="{{ old('harga', $barang->harga) }}" style="width: 300%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
         </div>
     </div>
                             <!-- If you want to allow updating the image, uncomment the following section -->
@@ -125,7 +129,7 @@
                             <div class="card-body" style="display: flex; align-items: center;">
         <p style="margin-right: 16px; margin-bottom: 0;">Jumlah Stok:</p>
         <div style="flex: 1; position: relative; margin-left: 100px;">
-            <input type="text" name="jumlah_stok" value="{{ $barang->jumlah_stok }}" style="width: 300%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
+        <input type="text" name="jumlah_stok" value="{{ old('jumlah_stok', $barang->jumlah_stok) }}" style="width: 300%; padding: 8px; border: 3px solid #fff; box-sizing: border-box; border-radius: 16px;">
         </div>
     </div>
                             <!-- <div class="card-body" style="display: flex; align-items: center;">
@@ -147,7 +151,6 @@
     </div>
 </form>
 <!-- @php
-    // Hapus data barang dari sesi setelah digunakan
     session()->forget('barang');
 @endphp -->
 

@@ -12,7 +12,7 @@ class TokoUser extends Model
     protected $table = 'users'; // Sesuaikan dengan nama tabel sebenarnya
 
     // protected $fillable = [
-    //     'name', 'email', 'password', 'role', // Sesuaikan dengan kolom yang ada di tabel users
+    //     'name', 'email', 'password', 'role',
     // ];
     protected $fillable = ['TOKO'];
 

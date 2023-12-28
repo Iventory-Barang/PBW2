@@ -94,7 +94,6 @@
     <div class="card" style="height: 300px; width: 700px; background-color: #D15D5D4D;">
         <div class="row">
             <div class="col-md-7">
-                <!-- Your image tag goes here -->
             </div>
             <div class="col-md-6" style="text-align: left; font-weight: bold;">
                 <div class="card-body" style="text-align: left;">
@@ -131,8 +130,7 @@
                         @push('scripts')
     <script>
         function setBarangSession(barang) {
-            // Use AJAX or other methods to send the product details to the server
-            // In this example, I'm using a simple JavaScript session storage
+            
             sessionStorage.setItem('barangDetails', JSON.stringify(barang));
         }
     </script>
